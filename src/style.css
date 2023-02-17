@@ -65,6 +65,6 @@ small {
   color: white;
 }
 
-#description::first-letter {
+li:first-letter {
   text-transform: capitalize ;
 }

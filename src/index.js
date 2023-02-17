@@ -3,6 +3,29 @@ let city = "london";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 console.log(apiUrl);
 
+function displayDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+
 function displayTemp(response) {
   console.log(response.data);
   let degree = document.getElementById("degree");
@@ -15,6 +38,8 @@ function displayTemp(response) {
   humidity.innerHTML = response.data.temperature.humidity;
   let wind = document.getElementById("wind");
   wind.innerHTML = response.data.wind.speed;
+  let dateElement = document.getElementById("comment");
+  dateElement.innerHTML = displayDate(response.data.time * 1000);
 }
 
 axios.get(apiUrl).then(displayTemp);
