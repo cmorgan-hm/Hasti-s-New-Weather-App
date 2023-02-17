@@ -1,8 +1,3 @@
-let apiKey = `3do9a264fbe8b4ta0705174c4f40d76f`;
-let city = "london";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-console.log(apiUrl);
-
 function displayDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
@@ -27,7 +22,6 @@ function displayDate(timestamp) {
 }
 
 function displayTemp(response) {
-  console.log(response.data);
   let degree = document.getElementById("degree");
   degree.innerHTML = Math.round(response.data.temperature.current);
   let description = document.getElementById("description");
@@ -40,6 +34,25 @@ function displayTemp(response) {
   wind.innerHTML = response.data.wind.speed;
   let dateElement = document.getElementById("comment");
   dateElement.innerHTML = displayDate(response.data.time * 1000);
+  let cityName = document.querySelector("h1");
+  cityName.innerHTML = response.data.city;
 }
 
-axios.get(apiUrl).then(displayTemp);
+function start(city) {
+  let apiKey = `3do9a264fbe8b4ta0705174c4f40d76f`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+
+  axios.get(apiUrl).then(displayTemp);
+}
+
+function search(event) {
+  event.preventDefault();
+  globalThis.cityInput = document.getElementById("city-input");
+  start(cityInput.value);
+  globalThis.city = cityInput.value;
+}
+
+start("Berlin");
+
+let form = document.getElementById("search-form");
+form.addEventListener("submit", search);
