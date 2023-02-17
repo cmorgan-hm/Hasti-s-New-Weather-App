@@ -10,7 +10,11 @@ function displayTemp(response) {
   let description = document.getElementById("description");
   description.innerHTML = response.data.condition.description;
   let city = document.getElementById("city");
-  city.innerHTML = response.data.city
+  city.innerHTML = response.data.city;
+  let humidity = document.getElementById("humidity");
+  humidity.innerHTML = response.data.temperature.humidity;
+  let wind = document.getElementById("wind");
+  wind.innerHTML = response.data.wind.speed;
 }
 
 axios.get(apiUrl).then(displayTemp);
