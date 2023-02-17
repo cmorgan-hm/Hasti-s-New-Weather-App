@@ -22,6 +22,7 @@ function displayDate(timestamp) {
 }
 
 function displayTemp(response) {
+  console.log(response.data);
   let degree = document.getElementById("degree");
   degree.innerHTML = Math.round(response.data.temperature.current);
   let description = document.getElementById("description");
@@ -36,6 +37,9 @@ function displayTemp(response) {
   dateElement.innerHTML = displayDate(response.data.time * 1000);
   let cityName = document.querySelector("h1");
   cityName.innerHTML = response.data.city;
+  let backgroundPattern = response.data.condition.icon;
+  let background = document.getElementById("background");
+  background.classList.add(backgroundPattern);
 }
 
 function start(city) {
@@ -52,7 +56,7 @@ function search(event) {
   globalThis.city = cityInput.value;
 }
 
-start("Berlin");
-
 let form = document.getElementById("search-form");
 form.addEventListener("submit", search);
+
+start("Berlin");
