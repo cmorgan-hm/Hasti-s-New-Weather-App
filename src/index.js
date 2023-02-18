@@ -64,13 +64,24 @@ function convertUnitF(event) {
     event.preventDefault();
     let fahrenheitTemp = (degreeCelsius * 9.5) + 32;
     fahrenheit.classList.add("active");
+    celsius.classList.remove("active");
     degree.innerHTML = fahrenheitTemp
 
 }
 
+function convertUnitS(event) {
+    event.preventDefault();
+    celsius.classList.add("active");
+    fahrenheit.classList.remove("active");
+    degree.innerHTML = degreeCelsius
+}
 
 
-let fahrenheit = document.getElementById ("fahrenheit");
+
+let fahrenheit = document.getElementById("fahrenheit");
 fahrenheit.addEventListener("click", convertUnitF);
+
+let celsius = document.getElementById("celsius");
+celsius.addEventListener("click", convertUnitS);
 
 start("Berlin");
