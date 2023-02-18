@@ -136,3 +136,9 @@ small {
 li:first-letter {
   text-transform: capitalize;
 }
+
+.active {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}

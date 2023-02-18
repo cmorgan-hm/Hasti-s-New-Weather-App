@@ -22,9 +22,10 @@ function displayDate(timestamp) {
 }
 
 function displayTemp(response) {
-  console.log(response.data);
-  let degree = document.getElementById("degree");
+  //console.log(response.data);
+  globalThis.degree = document.getElementById("degree");
   degree.innerHTML = Math.round(response.data.temperature.current);
+  globalThis.degreeCelsius = Math.round(response.data.temperature.current);
   let description = document.getElementById("description");
   description.innerHTML = response.data.condition.description;
   let city = document.getElementById("city");
@@ -58,5 +59,18 @@ function search(event) {
 
 let form = document.getElementById("search-form");
 form.addEventListener("submit", search);
+
+function convertUnitF(event) {
+    event.preventDefault();
+    let fahrenheitTemp = (degreeCelsius * 9.5) + 32;
+    fahrenheit.classList.add("active");
+    degree.innerHTML = fahrenheitTemp
+
+}
+
+
+
+let fahrenheit = document.getElementById ("fahrenheit");
+fahrenheit.addEventListener("click", convertUnitF);
 
 start("Berlin");
