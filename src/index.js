@@ -40,6 +40,7 @@ function displayTemp(response) {
   cityName.innerHTML = response.data.city;
   let backgroundPattern = response.data.condition.icon;
   let background = document.getElementById("background");
+  background.className = "";
   background.classList.add(backgroundPattern);
 }
 
@@ -61,22 +62,19 @@ let form = document.getElementById("search-form");
 form.addEventListener("submit", search);
 
 function convertUnitF(event) {
-    event.preventDefault();
-    let fahrenheitTemp = (degreeCelsius * 9.5) + 32;
-    fahrenheit.classList.add("active");
-    celsius.classList.remove("active");
-    degree.innerHTML = fahrenheitTemp
-
+  event.preventDefault();
+  let fahrenheitTemp = degreeCelsius * 9.5 + 32;
+  fahrenheit.classList.add("active");
+  celsius.classList.remove("active");
+  degree.innerHTML = fahrenheitTemp;
 }
 
 function convertUnitS(event) {
-    event.preventDefault();
-    celsius.classList.add("active");
-    fahrenheit.classList.remove("active");
-    degree.innerHTML = degreeCelsius
+  event.preventDefault();
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  degree.innerHTML = degreeCelsius;
 }
-
-
 
 let fahrenheit = document.getElementById("fahrenheit");
 fahrenheit.addEventListener("click", convertUnitF);
