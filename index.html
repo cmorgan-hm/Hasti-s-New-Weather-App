@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>ًWeather App</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -38,7 +38,7 @@
         <li id="description"></li>
     </div>
         <div class="row">
-          <div class="col-6 d-flex"> <span id="degree"></span> <span id="unit"> <span id="celsius"> <a href="#">°C</a>  </span> | <span id="fahrenheit"> <a href="#"> °F</a></span></span></div>
+          <div class="col-6 d-flex"> <span id="degree" class="degree"></span> <span id="unit"> <span id="celsius"> <a href="#">°C</a>  </span> | <span id="fahrenheit"> <a href="#"> °F</a></span></span></div>
           <div class="col-6">
             <ul>
               <li >Humidity = <span id="humidity"></span>%</li>
@@ -48,6 +48,24 @@
         </div>
      </div>
       </ul>
+      <div id="forecast">
+        <div class="row">
+<div class="col-2"> 
+  <div class="weather-forecast-date">
+  Fri
+  </div>
+  <div class="weather-forecast-icon">
+  <img src="images/day-snow.gif" alt="" width="40px">
+  </div>
+  <span class="weather-forecast-max">
+  18°
+</span> 
+  <span class="weather-forecast-min">
+  12°
+</span>
+</div>
+</div>
+      </div>
        <small>
           <a href="https://github.com/cmorgan-hm/Hasti-s-New-Weather-App">
           Open-source code</a> by Hasti Maghsoodi
