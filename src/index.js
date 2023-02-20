@@ -21,6 +21,36 @@ function displayDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.getElementById("forecast");
+  let forecastHTML = `<div class="forecast-container">
+        <div class="row" >`;
+        let days = ["Sun", "Mon", "Tue"];
+       days.forEach (function (day) {
+forecastHTML =
+  forecastHTML +
+  `
+<div class="col-2"> 
+  <div class="weather-forecast-date">
+  ${day}
+  </div>
+  <div class="weather-forecast-icon">
+  <img src="images/day-snow.gif" alt="" width="40px">
+  </div>
+  <span class="weather-forecast-max">
+  18°
+</span> 
+  <span class="weather-forecast-min">
+  12°
+</span>
+</div>
+`;
+       })
+  
+forecastHTML = forecastHTML + `</div> </div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemp(response) {
   //console.log(response.data);
   globalThis.degree = document.getElementById("degree");
@@ -83,3 +113,4 @@ let celsius = document.getElementById("celsius");
 celsius.addEventListener("click", convertUnitS);
 
 start("Berlin");
+displayForecast("");
