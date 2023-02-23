@@ -25,11 +25,11 @@ function displayForecast() {
   let forecastElement = document.getElementById("forecast");
   let forecastHTML = `<div class="forecast-container">
         <div class="row" >`;
-        let days = ["Sun", "Mon", "Tue"];
-       days.forEach (function (day) {
-forecastHTML =
-  forecastHTML +
-  `
+  let days = ["Sun", "Mon", "Tue"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
 <div class="col-2"> 
   <div class="weather-forecast-date">
   ${day}
@@ -45,9 +45,9 @@ forecastHTML =
 </span>
 </div>
 `;
-       })
-  
-forecastHTML = forecastHTML + `</div> </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div> </div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
@@ -72,6 +72,7 @@ function displayTemp(response) {
   let background = document.getElementById("background");
   background.className = "";
   background.classList.add(backgroundPattern);
+  celsius.classList.add("active");
 }
 
 function start(city) {
@@ -105,12 +106,12 @@ function convertUnitS(event) {
   fahrenheit.classList.remove("active");
   degree.innerHTML = degreeCelsius;
 }
-
+let celsius = document.getElementById("celsius");
 let fahrenheit = document.getElementById("fahrenheit");
 fahrenheit.addEventListener("click", convertUnitF);
 
-let celsius = document.getElementById("celsius");
 celsius.addEventListener("click", convertUnitS);
 
 start("Berlin");
+celsius.classList.add("active");
 displayForecast("");

@@ -137,6 +137,10 @@ li:first-letter {
   text-transform: capitalize;
 }
 
+.unit {
+  text-decoration: none;
+}
+
 .active {
   text-decoration: none;
   color: black;
@@ -156,7 +160,7 @@ li:first-letter {
 }
 
 .weather-forecast-max {
-  font-weight: 700; 
+  font-weight: 700;
 }
 
 .weather-forecast-max,
