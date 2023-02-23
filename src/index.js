@@ -21,30 +21,52 @@ function displayDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function formatDay(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let day = date.getDay();
+let days = [
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",
+];
+
+return days[day];
+
+}
+
+function displayForecast(response) {
+    //console.log(response.data.daily);
+ let forecast = response.data.daily;
   let forecastElement = document.getElementById("forecast");
+
   let forecastHTML = `<div class="forecast-container">
         <div class="row" >`;
-  let days = ["Sun", "Mon", "Tue"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
 <div class="col-2"> 
   <div class="weather-forecast-date">
-  ${day}
+  ${formatDay(forecastDay.time)}
   </div>
   <div class="weather-forecast-icon">
-  <img src="images/day-snow.gif" alt="" width="40px">
+  <img src="images/new/${forecastDay.condition.icon}.gif" alt="" width="40px">
   </div>
   <span class="weather-forecast-max">
-  18°
+  ${Math.round(forecastDay.temperature.maximum)}°
 </span> 
   <span class="weather-forecast-min">
-  12°
+  ${Math.round(forecastDay.temperature.minimum)}°
 </span>
 </div>
 `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div> </div>`;
@@ -78,8 +100,11 @@ function displayTemp(response) {
 function start(city) {
   let apiKey = `3do9a264fbe8b4ta0705174c4f40d76f`;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
+  //console.log(apiUrlForecast);
 
   axios.get(apiUrl).then(displayTemp);
+  axios.get(apiUrlForecast).then(displayForecast);
 }
 
 function search(event) {
@@ -114,4 +139,3 @@ celsius.addEventListener("click", convertUnitS);
 
 start("Berlin");
 celsius.classList.add("active");
-displayForecast("");
