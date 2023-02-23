@@ -22,30 +22,21 @@ function displayDate(timestamp) {
 }
 
 function formatDay(timestamp) {
-    let date = new Date(timestamp * 1000);
-    let day = date.getDay();
-let days = [
-  "Sun",
-  "Mon",
-  "Tue",
-  "Wed",
-  "Thu",
-  "Fri",
-  "Sat",
-];
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-return days[day];
-
+  return days[day];
 }
 
 function displayForecast(response) {
-    //console.log(response.data.daily);
- let forecast = response.data.daily;
+  //console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.getElementById("forecast");
 
   let forecastHTML = `<div class="forecast-container">
         <div class="row" >`;
-  
+
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
@@ -119,7 +110,7 @@ form.addEventListener("submit", search);
 
 function convertUnitF(event) {
   event.preventDefault();
-  let fahrenheitTemp = degreeCelsius * 9.5 + 32;
+  let fahrenheitTemp = degreeCelsius * 1.8 + 32;
   fahrenheit.classList.add("active");
   celsius.classList.remove("active");
   degree.innerHTML = fahrenheitTemp;
