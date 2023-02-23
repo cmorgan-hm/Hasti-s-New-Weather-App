@@ -56,7 +56,7 @@ function displayForecast(response) {
   ${formatDay(forecastDay.time)}
   </div>
   <div class="weather-forecast-icon">
-  <img src="images/new/${forecastDay.condition.icon}.gif" alt="" width="40px">
+  <img src="images/${forecastDay.condition.icon}.gif" alt="" width="40px">
   </div>
   <span class="weather-forecast-max">
   ${Math.round(forecastDay.temperature.maximum)}°
