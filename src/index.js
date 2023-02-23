@@ -110,7 +110,7 @@ form.addEventListener("submit", search);
 
 function convertUnitF(event) {
   event.preventDefault();
-  let fahrenheitTemp = degreeCelsius * 1.8 + 32;
+  let fahrenheitTemp = Math.round(degreeCelsius * 1.8 + 32);
   fahrenheit.classList.add("active");
   celsius.classList.remove("active");
   degree.innerHTML = fahrenheitTemp;
